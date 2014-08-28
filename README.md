@@ -60,18 +60,24 @@ Building from source
  * cd into the OpenELEC root directory
  * Fetch the openelec-games repository. If you built OpenELEC from source, you can use ''git submodule''
   
-    git submodule add https://github.com/retro16/openelec-games.git packages/openelec-games
+```
+git submodule add https://github.com/retro16/openelec-games.git packages/openelec-games
+```
  
  * Install build dependencies on your distribution. For Debian, you can run this command :
 
-    apt-get install build-essential automake gawk git texinfo gperf cvs xsltproc libncurses5-dev libxml-parser-perl unzip zip xfonts-utils wget libsdl1.2-dev libsdl-ttf2.0-dev bc default-jre-headless fontconfig libfontconfig1-dev libxinerama-dev
+```
+apt-get install build-essential automake gawk git texinfo gperf cvs xsltproc libncurses5-dev libxml-parser-perl unzip zip xfonts-utils wget libsdl1.2-dev libsdl-ttf2.0-dev bc default-jre-headless fontconfig libfontconfig1-dev libxinerama-dev
+```
 
  * Build each addon with the following commands :
 
-    ARCH=x86_64 scripts/create_addon SDL_ttf
-    ARCH=x86_64 scripts/create_addon mame
-    ARCH=x86_64 scripts/create_addon retroarch
- 
+```
+ARCH=x86_64 scripts/create_addon SDL_ttf
+ARCH=x86_64 scripts/create_addon mame
+ARCH=x86_64 scripts/create_addon retroarch
+```
+
  * Zip files are generated in the target/addon subdirectory
 
 
