@@ -1,0 +1,120 @@
+#!/bin/bash
+
+(
+systemctl stop xbmc.service
+sleep 0.2
+
+export LD_LIBRARY_PATH="$(dirname "$0")/../../script.module.SDL_ttf/lib"
+export AUDIODEV=hw:0,3
+MAMEROOT=/storage/emulators/mame
+
+[ -d $MAMEROOT ] || mkdir -p $MAMEROOT
+
+for dir in roms hash samples artwork ctrlr ini cheat crosshair cfg nvram memcard inp sta snap diff comments; do
+  [ -d $MAMEROOT/$dir ] || mkdir $MAMEROOT/$dir
+done
+
+# Generate initial configuration
+[ -e $MAMEROOT/ini/mame.ini ] || "$(dirname "$0")/../libexec/mame" \
+-rompath                   $MAMEROOT/roms      \
+-hashpath                  $MAMEROOT/hash      \
+-samplepath                $MAMEROOT/samples   \
+-artpath                   $MAMEROOT/artwork   \
+-ctrlrpath                 $MAMEROOT/ctrlr     \
+-inipath                   $MAMEROOT/ini       \
+-fontpath                  .                   \
+-cheatpath                 $MAMEROOT/cheat     \
+-crosshairpath             $MAMEROOT/crosshair \
+-cfg_directory             $MAMEROOT/cfg       \
+-nvram_directory           $MAMEROOT/nvram     \
+-memcard_directory         $MAMEROOT/memcard   \
+-input_directory           $MAMEROOT/inp       \
+-state_directory           $MAMEROOT/sta       \
+-snapshot_directory        $MAMEROOT/snap      \
+-diff_directory            $MAMEROOT/diff      \
+-comment_directory         $MAMEROOT/comments  \
+-skip_gameinfo             1                   \
+-multithreading            1                   \
+-waitvsync                 1                   \
+-syncrefresh               1                   \
+-showconfig > $MAMEROOT/ini/mame.ini
+
+[ -e $MAMEROOT/cfg/default.cfg ] || cat > $MAMEROOT/cfg/default.cfg <<EOF
+<?xml version="1.0"?>
+<mameconfig version="10">
+    <system name="default">
+        <input>
+            <port type="P1_JOYSTICK_UP">
+                <newseq type="standard">
+                    JOYCODE_1_YAXIS_UP_SWITCH OR JOYCODE_1_HAT1UP
+                </newseq>
+            </port>
+            <port type="P1_JOYSTICK_DOWN">
+                <newseq type="standard">
+                    JOYCODE_1_YAXIS_DOWN_SWITCH OR JOYCODE_1_HAT1DOWN
+                </newseq>
+            </port>
+            <port type="P1_JOYSTICK_LEFT">
+                <newseq type="standard">
+                    JOYCODE_1_XAXIS_LEFT_SWITCH OR JOYCODE_1_HAT1LEFT
+                </newseq>
+            </port>
+            <port type="P1_JOYSTICK_RIGHT">
+                <newseq type="standard">
+                    JOYCODE_1_XAXIS_RIGHT_SWITCH OR JOYCODE_1_HAT1RIGHT
+                </newseq>
+            </port>
+            <port type="START1">
+                <newseq type="standard">
+                    JOYCODE_1_BUTTON8
+                </newseq>
+            </port>
+            <port type="COIN1">
+                <newseq type="standard">
+                    JOYCODE_1_BUTTON10
+                </newseq>
+            </port>
+            <port type="COIN2">
+                <newseq type="standard">
+                    JOYCODE_1_BUTTON11
+                </newseq>
+            </port>
+            <port type="UI_CONFIGURE">
+                <newseq type="standard">
+                    JOYCODE_1_BUTTON9
+                </newseq>
+            </port>
+            <port type="UI_UP">
+                <newseq type="standard">
+                    JOYCODE_1_YAXIS_UP_SWITCH OR JOYCODE_1_HAT1UP
+                </newseq>
+            </port>
+            <port type="UI_DOWN">
+                <newseq type="standard">
+                    JOYCODE_1_YAXIS_DOWN_SWITCH OR JOYCODE_1_HAT1DOWN
+                </newseq>
+            </port>
+            <port type="UI_LEFT">
+                <newseq type="standard">
+                    JOYCODE_1_XAXIS_LEFT_SWITCH OR JOYCODE_1_HAT1LEFT
+                </newseq>
+            </port>
+            <port type="UI_RIGHT">
+                <newseq type="standard">
+                    JOYCODE_1_XAXIS_RIGHT_SWITCH OR JOYCODE_1_HAT1RIGHT
+                </newseq>
+            </port>
+            <port type="UI_CANCEL">
+                <newseq type="standard">
+                    JOYCODE_1_BUTTON7
+                </newseq>
+            </port>
+        </input>
+    </system>
+</mameconfig>
+EOF
+
+"$(dirname "$0")/../libexec/mame" -inipath $MAMEROOT/ini "$@"
+
+systemctl start xbmc.service
+) & disown

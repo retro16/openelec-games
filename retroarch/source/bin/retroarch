@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ "$1" ] && [ "$2" ]; then
+  RETROCORE="$1"
+  shift
+else
+  RETROCORE="menu"
+fi
+. "$(dirname "$0")"/../libexec/retroarch-common.sh "$RETROCORE" "$@"

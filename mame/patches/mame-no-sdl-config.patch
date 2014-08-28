@@ -1,0 +1,27 @@
+--- mame-153/src/osd/sdl/sdl.mak	2014-07-10 14:27:03.640301923 +0200
++++ mame-153.patch/src/osd/sdl/sdl.mak	2014-07-10 14:32:44.272143069 +0200
+@@ -519,11 +519,11 @@
+ 
+ # Don't pull in the system includes if we are compiling for Emscripten, which has its own headers
+ ifneq ($(TARGETOS),emscripten)
+-INCPATH += `$(SDL_CONFIG) --cflags  | sed -e 's:/SDL[2]*::' -e 's:\(-D[^ ]*\)::g'`
++#INCPATH += `$(SDL_CONFIG) --cflags  | sed -e 's:/SDL[2]*::' -e 's:\(-D[^ ]*\)::g'`
+ endif
+-CCOMFLAGS += `$(SDL_CONFIG) --cflags  | sed -e 's:/SDL[2]*::' -e 's:\(-I[^ ]*\)::g'`
++#CCOMFLAGS += `$(SDL_CONFIG) --cflags  | sed -e 's:/SDL[2]*::' -e 's:\(-I[^ ]*\)::g'`
+ 
+-LIBS += `$(SDL_CONFIG) --libs`
++LIBS += `$(SDL_CONFIG) --libs` -lXext
+ 
+ ifeq ($(SDL_LIBVER),sdl2)
+ ifdef SDL_INSTALL_ROOT
+@@ -622,8 +622,8 @@
+ 
+ ifeq ($(BASE_TARGETOS),os2)
+ 
+-INCPATH += `sdl-config --cflags`
++#INCPATH += `sdl-config --cflags`
+ LIBS += `sdl-config --libs` -lpthread
+ 
+ endif # OS2
+ 

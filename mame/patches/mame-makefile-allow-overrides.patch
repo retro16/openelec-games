@@ -1,0 +1,39 @@
+Common subdirectories: mame-153/artwork and mame-153.patch/artwork
+Common subdirectories: mame-153/docs and mame-153.patch/docs
+Common subdirectories: mame-153/hash and mame-153.patch/hash
+Common subdirectories: mame-153/hlsl and mame-153.patch/hlsl
+Common subdirectories: mame-153/keymaps and mame-153.patch/keymaps
+diff -u mame-153/makefile mame-153.patch/makefile
+--- mame-153/makefile	2014-03-11 14:45:16.000000000 +0100
++++ mame-153.patch/makefile	2014-07-09 17:28:33.423313590 +0200
+@@ -336,13 +336,13 @@
+ 
+ # compiler, linker and utilities
+ ifneq ($(TARGETOS),emscripten)
+-AR = @ar
+-CC = @gcc
+-LD = @g++
++AR ?= @ar
++CC ?= @gcc
++LD ?= @g++
+ endif
+ MD = -mkdir$(EXE)
+ RM = @rm -f
+-OBJDUMP = @objdump
++OBJDUMP ?= @objdump
+ PYTHON = @python
+ 
+ 
+@@ -619,7 +619,7 @@
+ 
+ # LDFLAGS are used generally; LDFLAGSEMULATOR are additional
+ # flags only used when linking the core emulator
+-LDFLAGS =
++LDFLAGS ?=
+ ifneq ($(TARGETOS),macosx)
+ ifneq ($(TARGETOS),os2)
+ ifneq ($(TARGETOS),solaris)
+Common subdirectories: mame-153/nl_examples and mame-153.patch/nl_examples
+Common subdirectories: mame-153/obj and mame-153.patch/obj
+Common subdirectories: mame-153/src and mame-153.patch/src
+Common subdirectories: mame-153/web and mame-153.patch/web

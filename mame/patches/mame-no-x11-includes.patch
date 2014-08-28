@@ -1,0 +1,14 @@
+--- mame-153/src/osd/sdl/sdl.mak	2014-03-21 03:52:00.000000000 +0100
++++ mame-153.patch/src/osd/sdl/sdl.mak	2014-07-10 09:54:12.160410853 +0200
+@@ -703,9 +703,9 @@
+ endif
+ 
+ # some systems still put important things in a different prefix
+-LIBS += -L/usr/X11/lib -L/usr/X11R6/lib -L/usr/openwin/lib
++#LIBS += -L/usr/X11/lib -L/usr/X11R6/lib -L/usr/openwin/lib
+ # make sure we can find X headers
+-INCPATH += -I/usr/X11/include -I/usr/X11R6/include -I/usr/openwin/include
++#INCPATH += -I/usr/X11/include -I/usr/X11R6/include -I/usr/openwin/include
+ endif # NO_X11
+ 
+ # can't use native libs with emscripten
