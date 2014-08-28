@@ -60,7 +60,7 @@ Building from source
  * cd into the OpenELEC root directory
  * Fetch the openelec-games repository. If you built OpenELEC from source, you can use ''git submodule''
   
-    git submodule add https://github.com/retro16/openelec-games.git packages/openelec-games`
+    git submodule add https://github.com/retro16/openelec-games.git packages/openelec-games
  
  * Install build dependencies on your distribution. For Debian, you can run this command :
 
