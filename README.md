@@ -56,15 +56,21 @@ will be able to put ROMs there and access saves, savestates, ...
 Building from source
 --------------------
 
- * Follow the [instructions to build OpenELEC][5]
-   If you wish to use a release branch instead of the master, run the command `git checkout -b openelec-4.1` immediatly after `git clone`
+ * To build the whole distribution along with the package, follow the [instructions to build OpenELEC][5]. You may wish to fetch a stable release of OpenELEC : for this, add `-b openelec-4.0` to the git clone command.
+
+ * Alternatively, simply clone the OpenELEC repository (adjust openelec-4.0 to the branch you wish) :
+
+```
+git clone -b openelec-4.0 https://github.com/OpenELEC/OpenELEC.tv.git
+```
+
  * cd into the OpenELEC root directory
- * Fetch the openelec-games repository. If you built OpenELEC from source, you can use ''git submodule''
+
+ * Fetch the openelec-games repository. If you built OpenELEC from source, you can use ''git submodule'' :
   
 ```
 git submodule add https://github.com/retro16/openelec-games.git packages/openelec-games
 ```
- 
  * Install build dependencies on your distribution. For Debian, you can run this command :
 
 ```
@@ -74,7 +80,6 @@ apt-get install build-essential automake gawk git texinfo gperf cvs xsltproc lib
  * Build each addon with the following commands :
 
 ```
-ARCH=x86_64 scripts/create_addon SDL_ttf
 ARCH=x86_64 scripts/create_addon mame
 ARCH=x86_64 scripts/create_addon retroarch
 ```
