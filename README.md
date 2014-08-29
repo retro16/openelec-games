@@ -91,5 +91,5 @@ ARCH=x86_64 scripts/create_addon retroarch
 [1]: http://openelec.tv "Official OpenELEC.tv website"
 [2]: http://mamedev.org "Official MAME website"
 [3]: http://libretro.com "Official libretro/retroarch website"
-[4]: http://coulon-jm.fr/public/openelec-games "Pre-compiled binaries"
+[4]: http://coulon-jm.fr/openelec-games "Pre-compiled binaries"
 [5]: http://wiki.openelec.tv/index.php?title=Compile_from_source "OpenELEC: Compile from source"
