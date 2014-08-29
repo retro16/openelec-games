@@ -56,13 +56,13 @@ will be able to put ROMs there and access saves, savestates, ...
 Building from source
 --------------------
 
- * To build the whole distribution along with the package, follow the [instructions to build OpenELEC][5]. You may wish to fetch a stable release of OpenELEC : for this, add `-b openelec-4.0` to the git clone command.
-
- * Alternatively, simply clone the OpenELEC repository (adjust openelec-4.0 to the branch you wish) :
+ * Clone the OpenELEC repository (adjust openelec-4.0 to the branch you wish) :
 
 ```
 git clone -b openelec-4.0 https://github.com/OpenELEC/OpenELEC.tv.git
 ```
+
+ * (optional) If you wish to build the whole distributions, refer to [instructions to build OpenELEC][5]
 
  * cd into the OpenELEC root directory
 
