@@ -57,6 +57,7 @@ Building from source
 --------------------
 
  * Follow the [instructions to build OpenELEC][5]
+   If you wish to use a release branch instead of the master, run the command `git checkout -b openelec-4.1̀  immediatly after `git clone`
  * cd into the OpenELEC root directory
  * Fetch the openelec-games repository. If you built OpenELEC from source, you can use ''git submodule''
   
