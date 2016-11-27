@@ -1,3 +1,10 @@
+Project closed
+==============
+
+Due to the fact that I don't use OpenELEC anymore, I won't maintain it anymore.
+
+This project is left open for archive purposes only, feel free to fork but don't expect any maintenance.
+
 openelec-games
 ==============
 
